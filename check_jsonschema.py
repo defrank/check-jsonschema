@@ -94,10 +94,10 @@ def main():
 
     if args.schemafile.startswith("https://") or args.schemafile.startswith("http://"):
         with cached_open(args.schemafile, args.cache_filename) as fp:
-            schema = json.load(fp)
+            schema = yaml.load(fp)
     else:
         with open(args.schemafile) as f:
-            schema = json.load(f)
+            schema = yaml.load(f)
 
     failures = {}
     for instancefile in args.instancefiles:
