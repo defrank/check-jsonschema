@@ -70,7 +70,7 @@ def cached_open(file_url, filename):
             yield fp
 
 
-def main():
+def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--schemafile",
@@ -90,7 +90,7 @@ def main():
         ),
     )
     parser.add_argument("instancefiles", nargs="+", help="JSON or YAML files to check.")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     if args.schemafile.startswith("https://") or args.schemafile.startswith("http://"):
         with cached_open(args.schemafile, args.cache_filename) as fp:
